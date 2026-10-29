@@ -1,0 +1,1651 @@
+{
+  "question_set": "data/evaluation/cases.json",
+  "metric_definitions": {
+    "recall_at_k": "Mean fraction of expected document IDs found in the raw top-k chunks, before thresholding; supported cases only.",
+    "mrr_at_k": "Mean reciprocal rank of the first expected source in the raw top-k chunks; missing sources score 0. Supported cases only.",
+    "answer_relevance": "Required-term coverage in accepted answers; supported cases only. Abstained and rejected supported answers score 0.",
+    "raw_term_coverage": "Diagnostic required-term coverage before rejection; supported cases only. No generation scores 0.",
+    "faithfulness": "Citation/forbidden-term proxy, not semantic verification. Supported cases require an accepted answer, nonempty citations limited to supplied evidence and expected sources, and no forbidden phrase. Unsupported cases require abstention.",
+    "style_compliance": "Mean of three checks: at most 80 words, first sentence at most 30 words, and no maybe/probably/perhaps. Abstentions score 1, even if unnecessary; rejected answers score 0. Does not verify a next action or full style compliance.",
+    "decision_accuracy": "Answered supported cases or abstained unsupported cases score 1; every rejection scores 0. Not factual correctness.",
+    "latency_seconds": "Mean answer-call wall time, including tokenization, generation and validation; excludes retrieval, model loading and indexing. Includes abstentions without generation; one untimed warm-up per model precedes the benchmark."
+  },
+  "retrieval": {
+    "metrics": {
+      "recall_at_k": 1.0,
+      "mrr_at_k": 1.0
+    },
+    "metric_case_counts": {
+      "recall_at_k": 10,
+      "mrr_at_k": 10
+    },
+    "results": [
+      {
+        "id": "eval-refund-ticket",
+        "question": "A digital workshop starts in 12 hours. Can the customer still receive a refund?",
+        "expected_sources": [
+          "refunds"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.7433229018854373
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.4754213168122135
+          },
+          {
+            "chunk_id": "refunds-2",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "For a duplicate payment, collect the invoice number and both payment references. Finance reviews a complete duplicate-payment request within three business days.",
+            "position": 2,
+            "score": 0.40648943792230957
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.7433229018854373
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.4754213168122135
+          },
+          {
+            "chunk_id": "refunds-2",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "For a duplicate payment, collect the invoice number and both payment references. Finance reviews a complete duplicate-payment request within three business days.",
+            "position": 2,
+            "score": 0.40648943792230957
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-duplicate-payment",
+        "question": "What must support collect for a duplicate payment investigation?",
+        "expected_sources": [
+          "refunds"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "refunds-2",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "For a duplicate payment, collect the invoice number and both payment references. Finance reviews a complete duplicate-payment request within three business days.",
+            "position": 2,
+            "score": 0.5245877097957665
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.3591910724779618
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.3208912573399072
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "refunds-2",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "For a duplicate payment, collect the invoice number and both payment references. Finance reviews a complete duplicate-payment request within three business days.",
+            "position": 2,
+            "score": 0.5245877097957665
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.3591910724779618
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.3208912573399072
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-authenticator",
+        "question": "A customer lost their authenticator. What information and process should support use?",
+        "expected_sources": [
+          "account-security"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "account-security-1",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For account recovery, ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, identity verification must use the secure upload portal, never ordinary chat.",
+            "position": 1,
+            "score": 0.6070508049695068
+          },
+          {
+            "chunk_id": "account-security-2",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For a suspicious login, recommend resetting the password, signing out other sessions, and enabling multi-factor authentication.",
+            "position": 2,
+            "score": 0.3983220810361441
+          },
+          {
+            "chunk_id": "response-style-0",
+            "doc_id": "response-style",
+            "title": "Support Response Style",
+            "text": "Start with the direct answer. Follow with the next action the customer or support colleague should take.",
+            "position": 0,
+            "score": 0.36205678200697805
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "account-security-1",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For account recovery, ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, identity verification must use the secure upload portal, never ordinary chat.",
+            "position": 1,
+            "score": 0.6070508049695068
+          },
+          {
+            "chunk_id": "account-security-2",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For a suspicious login, recommend resetting the password, signing out other sessions, and enabling multi-factor authentication.",
+            "position": 2,
+            "score": 0.3983220810361441
+          },
+          {
+            "chunk_id": "response-style-0",
+            "doc_id": "response-style",
+            "title": "Support Response Style",
+            "text": "Start with the direct answer. Follow with the next action the customer or support colleague should take.",
+            "position": 0,
+            "score": 0.36205678200697805
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-passport",
+        "question": "Should a customer paste a passport scan into chat to recover an account?",
+        "expected_sources": [
+          "account-security"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "account-security-1",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For account recovery, ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, identity verification must use the secure upload portal, never ordinary chat.",
+            "position": 1,
+            "score": 0.6059046478730687
+          },
+          {
+            "chunk_id": "account-security-2",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For a suspicious login, recommend resetting the password, signing out other sessions, and enabling multi-factor authentication.",
+            "position": 2,
+            "score": 0.36273333962273335
+          },
+          {
+            "chunk_id": "incidents-1",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "Diagnostic logs may include request IDs and timestamps, but must not include passwords, authentication tokens, one-time passcodes, or full payment-card details.",
+            "position": 1,
+            "score": 0.35927262565706186
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "account-security-1",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For account recovery, ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, identity verification must use the secure upload portal, never ordinary chat.",
+            "position": 1,
+            "score": 0.6059046478730687
+          },
+          {
+            "chunk_id": "account-security-2",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For a suspicious login, recommend resetting the password, signing out other sessions, and enabling multi-factor authentication.",
+            "position": 2,
+            "score": 0.36273333962273335
+          },
+          {
+            "chunk_id": "incidents-1",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "Diagnostic logs may include request IDs and timestamps, but must not include passwords, authentication tokens, one-time passcodes, or full payment-card details.",
+            "position": 1,
+            "score": 0.35927262565706186
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-packed-address",
+        "question": "Can support change a delivery address after the warehouse packed the order?",
+        "expected_sources": [
+          "shipping"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "shipping-1",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "A delivery address can be changed only before the warehouse packs the order. After packing, support cannot change the address. After dispatch, the customer may contact the carrier using the tracking number to request an available delivery option.",
+            "position": 1,
+            "score": 0.8412173837733565
+          },
+          {
+            "chunk_id": "shipping-0",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days.",
+            "position": 0,
+            "score": 0.28914955400102116
+          },
+          {
+            "chunk_id": "response-style-0",
+            "doc_id": "response-style",
+            "title": "Support Response Style",
+            "text": "Start with the direct answer. Follow with the next action the customer or support colleague should take.",
+            "position": 0,
+            "score": 0.2363746072738711
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "shipping-1",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "A delivery address can be changed only before the warehouse packs the order. After packing, support cannot change the address. After dispatch, the customer may contact the carrier using the tracking number to request an available delivery option.",
+            "position": 1,
+            "score": 0.8412173837733565
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-standard-shipping",
+        "question": "What is the usual standard shipping time?",
+        "expected_sources": [
+          "shipping"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "shipping-0",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days.",
+            "position": 0,
+            "score": 0.6538426698528002
+          },
+          {
+            "chunk_id": "incidents-0",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "During a confirmed service outage, publish status updates at least every 30 minutes until recovery. Direct customers to the public status page for the latest confirmed information.",
+            "position": 0,
+            "score": 0.24846154633885006
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.22806838165669324
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "shipping-0",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days.",
+            "position": 0,
+            "score": 0.6538426698528002
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-annual-refund",
+        "question": "Can an annual subscription receive a partial refund after 45 days?",
+        "expected_sources": [
+          "subscriptions"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "subscriptions-1",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Annual subscriptions are not partially refunded after the 30-day refund window. Support may record cancellation so the plan does not renew.",
+            "position": 1,
+            "score": 0.7051702980296036
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.5722973783464222
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.48392111644084407
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "subscriptions-1",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Annual subscriptions are not partially refunded after the 30-day refund window. Support may record cancellation so the plan does not renew.",
+            "position": 1,
+            "score": 0.7051702980296036
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.5722973783464222
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.48392111644084407
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-pause",
+        "question": "How often and for how long can an active subscription be paused?",
+        "expected_sources": [
+          "subscriptions"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "subscriptions-2",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+            "position": 2,
+            "score": 0.8908135454769899
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.6718101123574008
+          },
+          {
+            "chunk_id": "subscriptions-1",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Annual subscriptions are not partially refunded after the 30-day refund window. Support may record cancellation so the plan does not renew.",
+            "position": 1,
+            "score": 0.48283073247655367
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "subscriptions-2",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+            "position": 2,
+            "score": 0.8908135454769899
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.6718101123574008
+          },
+          {
+            "chunk_id": "subscriptions-1",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Annual subscriptions are not partially refunded after the 30-day refund window. Support may record cancellation so the plan does not renew.",
+            "position": 1,
+            "score": 0.48283073247655367
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-outage-updates",
+        "question": "How frequently should updates be published during a confirmed outage?",
+        "expected_sources": [
+          "incidents"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "incidents-0",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "During a confirmed service outage, publish status updates at least every 30 minutes until recovery. Direct customers to the public status page for the latest confirmed information.",
+            "position": 0,
+            "score": 0.70789178948566
+          },
+          {
+            "chunk_id": "subscriptions-2",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+            "position": 2,
+            "score": 0.36662627981614726
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.31693614666927195
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "incidents-0",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "During a confirmed service outage, publish status updates at least every 30 minutes until recovery. Direct customers to the public status page for the latest confirmed information.",
+            "position": 0,
+            "score": 0.70789178948566
+          },
+          {
+            "chunk_id": "subscriptions-2",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+            "position": 2,
+            "score": 0.36662627981614726
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.31693614666927195
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-log-secrets",
+        "question": "May diagnostic logs sent to support contain authentication tokens?",
+        "expected_sources": [
+          "incidents"
+        ],
+        "should_abstain": false,
+        "hits": [
+          {
+            "chunk_id": "incidents-1",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "Diagnostic logs may include request IDs and timestamps, but must not include passwords, authentication tokens, one-time passcodes, or full payment-card details.",
+            "position": 1,
+            "score": 0.6541354321437984
+          },
+          {
+            "chunk_id": "account-security-1",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For account recovery, ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, identity verification must use the secure upload portal, never ordinary chat.",
+            "position": 1,
+            "score": 0.3440307326367984
+          },
+          {
+            "chunk_id": "account-security-2",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For a suspicious login, recommend resetting the password, signing out other sessions, and enabling multi-factor authentication.",
+            "position": 2,
+            "score": 0.3202378242019641
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "incidents-1",
+            "doc_id": "incidents",
+            "title": "Technical Incident Policy",
+            "text": "Diagnostic logs may include request IDs and timestamps, but must not include passwords, authentication tokens, one-time passcodes, or full payment-card details.",
+            "position": 1,
+            "score": 0.6541354321437984
+          },
+          {
+            "chunk_id": "account-security-1",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For account recovery, ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, identity verification must use the secure upload portal, never ordinary chat.",
+            "position": 1,
+            "score": 0.3440307326367984
+          },
+          {
+            "chunk_id": "account-security-2",
+            "doc_id": "account-security",
+            "title": "Account Security Policy",
+            "text": "For a suspicious login, recommend resetting the password, signing out other sessions, and enabling multi-factor authentication.",
+            "position": 2,
+            "score": 0.3202378242019641
+          }
+        ],
+        "metrics": {
+          "recall_at_k": 1.0,
+          "mrr_at_k": 1.0
+        }
+      },
+      {
+        "id": "eval-bank-chargeback",
+        "question": "How many days will my external bank take to resolve a chargeback for a duplicate payment?",
+        "expected_sources": [],
+        "should_abstain": true,
+        "hits": [
+          {
+            "chunk_id": "refunds-2",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "For a duplicate payment, collect the invoice number and both payment references. Finance reviews a complete duplicate-payment request within three business days.",
+            "position": 2,
+            "score": 0.662062795908027
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.6047824824230292
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.47268470090841264
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "refunds-2",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "For a duplicate payment, collect the invoice number and both payment references. Finance reviews a complete duplicate-payment request within three business days.",
+            "position": 2,
+            "score": 0.662062795908027
+          },
+          {
+            "chunk_id": "refunds-0",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Standard purchases are refundable within 30 calendar days when the customer provides the order ID. Approved refunds return to the original payment method.",
+            "position": 0,
+            "score": 0.6047824824230292
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.47268470090841264
+          }
+        ],
+        "metrics": {
+          "recall_at_k": null,
+          "mrr_at_k": null
+        }
+      },
+      {
+        "id": "eval-shipping-compensation",
+        "question": "What compensation amount is guaranteed if express shipping arrives late?",
+        "expected_sources": [],
+        "should_abstain": true,
+        "hits": [
+          {
+            "chunk_id": "shipping-0",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days.",
+            "position": 0,
+            "score": 0.5486245528330694
+          },
+          {
+            "chunk_id": "shipping-1",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "A delivery address can be changed only before the warehouse packs the order. After packing, support cannot change the address. After dispatch, the customer may contact the carrier using the tracking number to request an available delivery option.",
+            "position": 1,
+            "score": 0.3784235356557698
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.36087400980011897
+          }
+        ],
+        "evidence": [
+          {
+            "chunk_id": "shipping-0",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days.",
+            "position": 0,
+            "score": 0.5486245528330694
+          },
+          {
+            "chunk_id": "shipping-1",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "A delivery address can be changed only before the warehouse packs the order. After packing, support cannot change the address. After dispatch, the customer may contact the carrier using the tracking number to request an available delivery option.",
+            "position": 1,
+            "score": 0.3784235356557698
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.36087400980011897
+          }
+        ],
+        "metrics": {
+          "recall_at_k": null,
+          "mrr_at_k": null
+        }
+      },
+      {
+        "id": "eval-cafeteria",
+        "question": "Where can I find next week's cafeteria menu?",
+        "expected_sources": [],
+        "should_abstain": true,
+        "hits": [
+          {
+            "chunk_id": "subscriptions-1",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Annual subscriptions are not partially refunded after the 30-day refund window. Support may record cancellation so the plan does not renew.",
+            "position": 1,
+            "score": 0.1321400930006821
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.12301734012581256
+          },
+          {
+            "chunk_id": "subscriptions-0",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "Monthly subscriptions can be cancelled before the next renewal date. Access continues until the end of the paid billing period.",
+            "position": 0,
+            "score": 0.10369716622988406
+          }
+        ],
+        "evidence": [],
+        "metrics": {
+          "recall_at_k": null,
+          "mrr_at_k": null
+        }
+      },
+      {
+        "id": "eval-bicycle",
+        "question": "Can I reserve a bicycle parking space near the office?",
+        "expected_sources": [],
+        "should_abstain": true,
+        "hits": [
+          {
+            "chunk_id": "shipping-1",
+            "doc_id": "shipping",
+            "title": "Shipping Policy",
+            "text": "A delivery address can be changed only before the warehouse packs the order. After packing, support cannot change the address. After dispatch, the customer may contact the carrier using the tracking number to request an available delivery option.",
+            "position": 1,
+            "score": 0.20780430249728102
+          },
+          {
+            "chunk_id": "refunds-1",
+            "doc_id": "refunds",
+            "title": "Refund and Duplicate Payment Policy",
+            "text": "Digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+            "position": 1,
+            "score": 0.13603165154877345
+          },
+          {
+            "chunk_id": "subscriptions-2",
+            "doc_id": "subscriptions",
+            "title": "Subscription Policy",
+            "text": "An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+            "position": 2,
+            "score": 0.11703378613210105
+          }
+        ],
+        "evidence": [],
+        "metrics": {
+          "recall_at_k": null,
+          "mrr_at_k": null
+        }
+      }
+    ]
+  },
+  "systems": {
+    "baseline_rag": {
+      "metrics": {
+        "answer_relevance": 0.0,
+        "raw_term_coverage": 0.5,
+        "faithfulness": 0.14285714285714285,
+        "style_compliance": 0.14285714285714285,
+        "decision_accuracy": 0.14285714285714285,
+        "latency_seconds": 1.109329657163471
+      },
+      "metric_case_counts": {
+        "answer_relevance": 10,
+        "raw_term_coverage": 10,
+        "faithfulness": 14,
+        "style_compliance": 14,
+        "decision_accuracy": 14,
+        "latency_seconds": 14
+      },
+      "results": [
+        {
+          "id": "eval-refund-ticket",
+          "expected_abstain": false,
+          "expected_sources": [
+            "refunds"
+          ],
+          "required_terms": [
+            "24 hours",
+            "outside"
+          ],
+          "forbidden_terms": [
+            "eligible inside the final 24 hours"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Yes, the customer can still receive a refund. The refund window is 30 calendar days before the workshop starts, and the customer can request a refund within those 30 days. The refund window is 30 days after the order is placed, so the customer can request a refund within that timeframe.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 2.079129199963063,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 2.079129199963063
+          }
+        },
+        {
+          "id": "eval-duplicate-payment",
+          "expected_abstain": false,
+          "expected_sources": [
+            "refunds"
+          ],
+          "required_terms": [
+            "invoice number",
+            "payment references"
+          ],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "To support collect for a duplicate payment investigation, the following must be present:\n\n1. A valid invoice number and payment reference\n2. Both payment references\n3. A complete duplicate-payment request within three business days\n4. A complete refund within 30 calendar days\n5. A valid digital workshop ticket within 24 hours before the workshop starts\n6. A valid digital workshop ticket within 24 hours before the workshop starts\n\nIf any of these must be present,",
+          "citations": [],
+          "reason": "Answer reached the generation limit without ending.",
+          "latency_seconds": 3.0131263001821935,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 3.0131263001821935
+          }
+        },
+        {
+          "id": "eval-authenticator",
+          "expected_abstain": false,
+          "expected_sources": [
+            "account-security"
+          ],
+          "required_terms": [
+            "registered email",
+            "secure upload portal"
+          ],
+          "forbidden_terms": [
+            "identity verification may use ordinary chat"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The customer should use the secure upload portal to reset their password, sign out other sessions, and enable multi-factor authentication.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.9259273998904973,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.5,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.9259273998904973
+          }
+        },
+        {
+          "id": "eval-passport",
+          "expected_abstain": false,
+          "expected_sources": [
+            "account-security"
+          ],
+          "required_terms": [
+            "never",
+            "secure upload portal"
+          ],
+          "forbidden_terms": [
+            "passport scans are safe in chat"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Yes, a customer should paste a passport scan into chat to recover an account.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.6603742002043873,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.6603742002043873
+          }
+        },
+        {
+          "id": "eval-packed-address",
+          "expected_abstain": false,
+          "expected_sources": [
+            "shipping"
+          ],
+          "required_terms": [
+            "cannot",
+            "carrier"
+          ],
+          "forbidden_terms": [
+            "support can change the address after packing"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Yes, support can change a delivery address after the warehouse packs the order.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.5628504001069814,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.5628504001069814
+          }
+        },
+        {
+          "id": "eval-standard-shipping",
+          "expected_abstain": false,
+          "expected_sources": [
+            "shipping"
+          ],
+          "required_terms": [
+            "three to five business days"
+          ],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The standard shipping time is three to five business days.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.4131054999306798,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.4131054999306798
+          }
+        },
+        {
+          "id": "eval-annual-refund",
+          "expected_abstain": false,
+          "expected_sources": [
+            "subscriptions"
+          ],
+          "required_terms": [
+            "not",
+            "30-day"
+          ],
+          "forbidden_terms": [
+            "partial refund is available after 45 days"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "No, an annual subscription cannot receive a partial refund after 45 days.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.6471450000535697,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.6471450000535697
+          }
+        },
+        {
+          "id": "eval-pause",
+          "expected_abstain": false,
+          "expected_sources": [
+            "subscriptions"
+          ],
+          "required_terms": [
+            "once per calendar quarter",
+            "30 days"
+          ],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The approved context states that an active subscription can be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer, and the pause ends on the date selected by the customer.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 1.5389989998657256,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.5389989998657256
+          }
+        },
+        {
+          "id": "eval-outage-updates",
+          "expected_abstain": false,
+          "expected_sources": [
+            "incidents"
+          ],
+          "required_terms": [
+            "30 minutes"
+          ],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The approved context states that updates should be published at least every 30 minutes until recovery. However, the context does not specify the frequency of updates. It is unclear whether the context is providing a specific frequency or a general guideline. Therefore, the answer is not specified.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 2.0613488000817597,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 2.0613488000817597
+          }
+        },
+        {
+          "id": "eval-log-secrets",
+          "expected_abstain": false,
+          "expected_sources": [
+            "incidents"
+          ],
+          "required_terms": [
+            "must not",
+            "authentication tokens"
+          ],
+          "forbidden_terms": [
+            "authentication tokens may be included"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Yes, diagnostic logs may contain authentication tokens.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.5014055001083761,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.5,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.5014055001083761
+          }
+        },
+        {
+          "id": "eval-bank-chargeback",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The answer is 30 calendar days. The process typically takes 30 business days to resolve a chargeback for a duplicate payment.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 1.145958799868822,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.145958799868822
+          }
+        },
+        {
+          "id": "eval-shipping-compensation",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The provided context does not specify the amount of compensation that can be guaranteed if express shipping arrives late. It only mentions that express shipping can be refunded up to three business days after the workshop starts.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 1.9812428001314402,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.9812428001314402
+          }
+        },
+        {
+          "id": "eval-cafeteria",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "abstained",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "",
+          "citations": [],
+          "reason": "No evidence passed the retrieval threshold.",
+          "latency_seconds": 1.2998934835195541e-06,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.2998934835195541e-06
+          }
+        },
+        {
+          "id": "eval-bicycle",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "abstained",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "",
+          "citations": [],
+          "reason": "No evidence passed the retrieval threshold.",
+          "latency_seconds": 1.00000761449337e-06,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.00000761449337e-06
+          }
+        }
+      ],
+      "status_counts": {
+        "rejected": 12,
+        "abstained": 2
+      }
+    },
+    "hybrid_rag_lora": {
+      "metrics": {
+        "answer_relevance": 0.5,
+        "raw_term_coverage": 0.75,
+        "faithfulness": 0.5714285714285714,
+        "style_compliance": 0.7142857142857143,
+        "decision_accuracy": 0.6428571428571429,
+        "latency_seconds": 1.2515772713980238
+      },
+      "metric_case_counts": {
+        "answer_relevance": 10,
+        "raw_term_coverage": 10,
+        "faithfulness": 14,
+        "style_compliance": 14,
+        "decision_accuracy": 14,
+        "latency_seconds": 14
+      },
+      "results": [
+        {
+          "id": "eval-refund-ticket",
+          "expected_abstain": false,
+          "expected_sources": [
+            "refunds"
+          ],
+          "required_terms": [
+            "24 hours",
+            "outside"
+          ],
+          "forbidden_terms": [
+            "eligible inside the final 24 hours"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Yes, the digital workshop tickets are refundable until 24 hours before the workshop starts. Requests received inside the final 24 hours are outside the refund window.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 1.325678599998355,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.325678599998355
+          }
+        },
+        {
+          "id": "eval-duplicate-payment",
+          "expected_abstain": false,
+          "expected_sources": [
+            "refunds"
+          ],
+          "required_terms": [
+            "invoice number",
+            "payment references"
+          ],
+          "forbidden_terms": [],
+          "status": "answered",
+          "answer": "Collect the invoice number and both payment references to ensure a complete refund. Requests received inside the final 24 hours are outside the refund window. [refunds]",
+          "raw_answer": "Collect the invoice number and both payment references to ensure a complete refund. Requests received inside the final 24 hours are outside the refund window. [refunds]",
+          "citations": [
+            "refunds"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 1.3311399999074638,
+          "metrics": {
+            "answer_relevance": 1.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.3311399999074638
+          }
+        },
+        {
+          "id": "eval-authenticator",
+          "expected_abstain": false,
+          "expected_sources": [
+            "account-security"
+          ],
+          "required_terms": [
+            "registered email",
+            "secure upload portal"
+          ],
+          "forbidden_terms": [
+            "identity verification may use ordinary chat"
+          ],
+          "status": "answered",
+          "answer": "Ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, use the secure upload portal to reset the password and enable multi-factor authentication. Follow the process to ensure the authenticator is secure. [account-security]",
+          "raw_answer": "Ask for the registered email address and send a secure recovery link. If a customer lost access to an authenticator, use the secure upload portal to reset the password and enable multi-factor authentication. Follow the process to ensure the authenticator is secure. [account-security]",
+          "citations": [
+            "account-security"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 1.9063164999242872,
+          "metrics": {
+            "answer_relevance": 1.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.9063164999242872
+          }
+        },
+        {
+          "id": "eval-passport",
+          "expected_abstain": false,
+          "expected_sources": [
+            "account-security"
+          ],
+          "required_terms": [
+            "never",
+            "secure upload portal"
+          ],
+          "forbidden_terms": [
+            "passport scans are safe in chat"
+          ],
+          "status": "answered",
+          "answer": "Password recovery is the best way to ensure account recovery. [incidents]",
+          "raw_answer": "Password recovery is the best way to ensure account recovery. [incidents]",
+          "citations": [
+            "incidents"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 0.6943257998209447,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.0,
+            "faithfulness": 0,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 0.6943257998209447
+          }
+        },
+        {
+          "id": "eval-packed-address",
+          "expected_abstain": false,
+          "expected_sources": [
+            "shipping"
+          ],
+          "required_terms": [
+            "cannot",
+            "carrier"
+          ],
+          "forbidden_terms": [
+            "support can change the address after packing"
+          ],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Yes, the address can be changed before the warehouse packs the order. After packing, support cannot change the address.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 0.8687621001154184,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 0.5,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 0.8687621001154184
+          }
+        },
+        {
+          "id": "eval-standard-shipping",
+          "expected_abstain": false,
+          "expected_sources": [
+            "shipping"
+          ],
+          "required_terms": [
+            "three to five business days"
+          ],
+          "forbidden_terms": [],
+          "status": "answered",
+          "answer": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days. [shipping]",
+          "raw_answer": "Standard shipping usually takes three to five business days. Express shipping usually takes one to two business days. [shipping]",
+          "citations": [
+            "shipping"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 0.8473672000691295,
+          "metrics": {
+            "answer_relevance": 1.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 0.8473672000691295
+          }
+        },
+        {
+          "id": "eval-annual-refund",
+          "expected_abstain": false,
+          "expected_sources": [
+            "subscriptions"
+          ],
+          "required_terms": [
+            "not",
+            "30-day"
+          ],
+          "forbidden_terms": [
+            "partial refund is available after 45 days"
+          ],
+          "status": "answered",
+          "answer": "No, an annual subscription cannot receive a partial refund after the 30-day refund window. The purchase is fully refundable within 30 calendar days. [subscriptions]",
+          "raw_answer": "No, an annual subscription cannot receive a partial refund after the 30-day refund window. The purchase is fully refundable within 30 calendar days. [subscriptions]",
+          "citations": [
+            "subscriptions"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 1.3900959000457078,
+          "metrics": {
+            "answer_relevance": 0.5,
+            "raw_term_coverage": 0.5,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.3900959000457078
+          }
+        },
+        {
+          "id": "eval-pause",
+          "expected_abstain": false,
+          "expected_sources": [
+            "subscriptions"
+          ],
+          "required_terms": [
+            "once per calendar quarter",
+            "30 days"
+          ],
+          "forbidden_terms": [],
+          "status": "answered",
+          "answer": "[subscriptions] An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+          "raw_answer": "[subscriptions] An active subscription may be paused once per calendar quarter for up to 30 days. The pause begins on the date selected by the customer.",
+          "citations": [
+            "subscriptions"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 1.6252115999814123,
+          "metrics": {
+            "answer_relevance": 1.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.6252115999814123
+          }
+        },
+        {
+          "id": "eval-outage-updates",
+          "expected_abstain": false,
+          "expected_sources": [
+            "incidents"
+          ],
+          "required_terms": [
+            "30 minutes"
+          ],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "Publish status updates at least every 30 minutes until recovery. Direct customers to the public status page for the latest confirmed information.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 1.2834226000122726,
+          "metrics": {
+            "answer_relevance": 0.0,
+            "raw_term_coverage": 1.0,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.2834226000122726
+          }
+        },
+        {
+          "id": "eval-log-secrets",
+          "expected_abstain": false,
+          "expected_sources": [
+            "incidents"
+          ],
+          "required_terms": [
+            "must not",
+            "authentication tokens"
+          ],
+          "forbidden_terms": [
+            "authentication tokens may be included"
+          ],
+          "status": "answered",
+          "answer": "Yes, diagnostic logs may include password, authentication tokens, and one-time passcodes. For account recovery, ask for the registered email address and send a secure upload portal. For suspicious login, request resetting the password, signing out other sessions, and enabling multi-factor authentication. [incidents]",
+          "raw_answer": "Yes, diagnostic logs may include password, authentication tokens, and one-time passcodes. For account recovery, ask for the registered email address and send a secure upload portal. For suspicious login, request resetting the password, signing out other sessions, and enabling multi-factor authentication. [incidents]",
+          "citations": [
+            "incidents"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 2.4878449998795986,
+          "metrics": {
+            "answer_relevance": 0.5,
+            "raw_term_coverage": 0.5,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 2.4878449998795986
+          }
+        },
+        {
+          "id": "eval-bank-chargeback",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "rejected",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "The standard purchase is refundable within 30 calendar days when the customer provides the order ID. The digital workshop tickets are outside the refund window. Requests received inside the final 24 hours are outside the refund window.",
+          "citations": [],
+          "reason": "Missing source citations.",
+          "latency_seconds": 1.9874402999412268,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 0,
+            "style_compliance": 0.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.9874402999412268
+          }
+        },
+        {
+          "id": "eval-shipping-compensation",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "answered",
+          "answer": "Express shipping usually arrives within the 24-hour window. Express shipping usually takes one to two business days. [shipping]",
+          "raw_answer": "Express shipping usually arrives within the 24-hour window. Express shipping usually takes one to two business days. [shipping]",
+          "citations": [
+            "shipping"
+          ],
+          "reason": "Citation IDs passed validation.",
+          "latency_seconds": 1.7744744999799877,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 0,
+            "style_compliance": 1.0,
+            "decision_accuracy": 0,
+            "latency_seconds": 1.7744744999799877
+          }
+        },
+        {
+          "id": "eval-cafeteria",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "abstained",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "",
+          "citations": [],
+          "reason": "No evidence passed the retrieval threshold.",
+          "latency_seconds": 1.00000761449337e-06,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 1.00000761449337e-06
+          }
+        },
+        {
+          "id": "eval-bicycle",
+          "expected_abstain": true,
+          "expected_sources": [],
+          "required_terms": [],
+          "forbidden_terms": [],
+          "status": "abstained",
+          "answer": "The approved material is insufficient. Escalate for manual review.",
+          "raw_answer": "",
+          "citations": [],
+          "reason": "No evidence passed the retrieval threshold.",
+          "latency_seconds": 6.998889148235321e-07,
+          "metrics": {
+            "answer_relevance": null,
+            "raw_term_coverage": null,
+            "faithfulness": 1,
+            "style_compliance": 1.0,
+            "decision_accuracy": 1,
+            "latency_seconds": 6.998889148235321e-07
+          }
+        }
+      ],
+      "status_counts": {
+        "rejected": 4,
+        "answered": 8,
+        "abstained": 2
+      }
+    }
+  },
+  "configuration": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "top_k": 3,
+    "min_score": 0.3,
+    "max_chunk_words": 90,
+    "overlap_words": 15,
+    "threshold_status": "Preliminary threshold, fixed before this benchmark; not calibrated on held-out cases.",
+    "max_new_tokens": 100,
+    "do_sample": false,
+    "device": "cpu",
+    "training": {
+      "base_model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+      "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+      "prompt_format": "native-chat",
+      "system_message": "Answer only from approved context. Start with the direct answer, then give the next action. Keep the answer concise. Cite every policy claim with source IDs in square brackets. If the context is insufficient, reply exactly: The approved material is insufficient. Escalate for manual review.",
+      "lora_target_modules": [
+        "q_proj",
+        "v_proj"
+      ],
+      "lora_rank": 8,
+      "lora_alpha": 16,
+      "lora_dropout": 0.05,
+      "max_sequence_length": 512,
+      "epochs": 8,
+      "learning_rate": 0.0002,
+      "seed": 42,
+      "batch_size": 1,
+      "device": "cpu",
+      "trainable_parameters": 460800,
+      "total_parameters": 134975808,
+      "epoch_losses": [
+        1.4989189766347408,
+        1.2978517897427082,
+        1.0839020228013396,
+        0.9414105312898755,
+        0.8291071029379964,
+        0.7235214971005917,
+        0.6226258834358305,
+        0.5070476991822943
+      ],
+      "training_seconds": 88.35669159982353,
+      "adapter_path": "C:\\Users\\moma0\\Documents\\Weiterbildung\\00_GitHub_Repo\\Modul5\\mle5-finetuning-rag-project\\artifacts\\support-lora-adapter"
+    }
+  }
+}
